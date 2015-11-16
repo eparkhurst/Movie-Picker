@@ -10,18 +10,21 @@ function run(){
       var movie = data.results.collection1[$randNum()].property1.text;
       var sendee = movie.replace(/\s/g,"+");
       $.get('http://www.omdbapi.com/?t='+sendee+'&y=&plot=short&r=json', function(omdb){
-        $(".container").append(omdb.Title);
-        $(".container").append('<img class="choice1" src='+omdb.Poster+'>')
+        $(".leftChoice").append("<h1>"+omdb.Title+"</h1>");
+        $(".leftChoice").append('<img class="choice1" src='+omdb.Poster+'>')
         //console.log(omdb)
         var rating1 = omdb.imdbRating;
+        console.log("1 is "+rating1);
           //*******
         var movie2 = data.results.collection1[$randNum()].property1.text;
         var sendee2 = movie2.replace(/\s/g,"+");
         $.get('http://www.omdbapi.com/?t='+sendee2+'&y=&plot=short&r=json', function(omdb){
-          $(".container").append(omdb.Title);
-          $(".container").append('<img class ="choice2" src='+omdb.Poster+'>')
+          $(".rightChoice").append("<h1>"+omdb.Title+"</h1>");
+          $(".rightChoice").append('<img class ="choice2" src='+omdb.Poster+'>')
           var rating2 = omdb.imdbRating;
+          console.log('2 is '+rating2);
           if(rating1 === rating2){
+            $choiceCount -=1;
             reset();
           }
           else if(rating1>rating2){
@@ -59,16 +62,15 @@ var userChoice = 0;
 
 function reset(){
   if($choiceCount == 10){
-    alert("Your score is"+$score);
+    alert("Your score is "+$score+"/10");
     $score = 0;
     $choiceCount = 0;
   }
-  $('.container').empty();
+  console.log($score);
+  $('.leftChoice').empty();
+  $('.rightChoice').empty();
   run();
 }
-
-
-
 
 var $randNum =function(){
   return Math.floor(Math.random()*1000);

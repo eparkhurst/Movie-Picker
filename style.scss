@@ -1,0 +1,22 @@
+body{
+  background-image:url("http://www.utahmoviereview.com/wp-content/uploads/2014/06/empty_theater.jpg");
+  background-size: cover;
+  text-align: center;
+  font-family: sans-serif;
+  color:#595959;
+}
+.container{
+  display: flex;
+
+}
+.leftChoice, .rightChoice{
+  text-align: center;
+  display: flex;
+  flex: 0 0 50%;
+  justify-content: center;
+  flex-wrap: wrap;
+  h1{
+    font-size: 2em;
+    flex:0 0 100%;
+  }
+}
