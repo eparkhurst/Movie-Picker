@@ -69,8 +69,10 @@ var userChoice = 0;
 }
 
 function reset(){
-  if($choiceCount == 10){                   //When a game is finished
-    alert("Your score is "+$score+"/10");
+  if($choiceCount == 1){                   //When a game is finished
+    $(".resultBox").css('display','block');
+    $(".overlay").css('display','block');
+    $(".resultBox").append("<h1>You're Score is "+$score+"/10</h1>")
     storeScore();
     $score = 0;
     $choiceCount = 0;
@@ -107,6 +109,11 @@ $(".userName").keyup(function(e){
     closeSubmitBox();
   }
 })
+$(".result").click(function(){
+  $(".resultBox").css('display','none');
+  $(".overlay").css('display','none');
+})
+
 
 function storeScore(){                                     //Stores user scores
   var userObj = JSON.parse(localStorage.getItem(currentUser))

@@ -42,4 +42,13 @@ body {
 .userForm {
   margin-top: 15px; }
 
+.resultBox {
+  margin: 150px auto;
+  position: relative;
+  background-color: #4a4a4a;
+  display: none;
+  z-index: 3;
+  height: 350px;
+  width: 250px; }
+
 /*# sourceMappingURL=final.css.map */
