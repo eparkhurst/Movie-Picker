@@ -85,7 +85,8 @@ var $randNum =function(){
   return Math.floor(Math.random()*1000);
 }
 
-$(".submit").click(function(){
+
+var closeSubmitBox = function(){
   $(".overlay").css("display","none");
   $(".inputBox").css("display", "none");
   currentUser = $(".userName").val().toLowerCase();
@@ -95,6 +96,15 @@ $(".submit").click(function(){
     'history' : []
     }
     localStorage.setItem(currentUser, JSON.stringify(newObj))
+  }
+}
+
+$(".submit").click(function(){
+  closeSubmitBox();
+})
+$(".userName").keyup(function(e){
+  if(e.keyCode === 13){
+    closeSubmitBox();
   }
 })
 

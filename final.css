@@ -33,10 +33,13 @@ body {
 .inputBox {
   margin: 150px auto;
   position: relative;
-  background-color: white;
+  background-color: #4a4a4a;
   display: block;
   z-index: 3;
   height: 150px;
-  width: 150px; }
+  width: 250px; }
+
+.userForm {
+  margin-top: 15px; }
 
 /*# sourceMappingURL=final.css.map */
