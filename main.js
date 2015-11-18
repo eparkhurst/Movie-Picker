@@ -5,6 +5,7 @@ var $correct = 0;
 var $choiceCount = 0;
 var currentUser = "";
 var userList = [];
+var Movies = [];
 
 for ( var i = 0, len = localStorage.length; i < len; ++i ) {
   userList.push( JSON.parse(localStorage.getItem( localStorage.key( i ) )).user );
@@ -119,4 +120,11 @@ function storeScore(){                                     //Stores user scores
   var userObj = JSON.parse(localStorage.getItem(currentUser))
   userObj.history.push($score)
   localStorage.setItem(currentUser, JSON.stringify(userObj))
+}
+
+var Movie = function(){
+  title:"",
+  poster:"",
+  rating:'',
+  win:false
 }
