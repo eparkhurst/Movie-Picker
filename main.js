@@ -7,6 +7,7 @@ var currentUser = "";
 var userList = [];
 var movies = [];
 
+
 for ( var i = 0, len = localStorage.length; i < len; ++i ) {
   userList.push( JSON.parse(localStorage.getItem( localStorage.key( i ) )).user );
 }
@@ -19,8 +20,7 @@ function run(){
       var movie = data.results.collection1[$randNum()].property1.text;
       var sendee = movie.replace(/\s/g,"+");
       $.get('http://www.omdbapi.com/?t='+sendee+'&y=&plot=short&r=json', function(omdb){
-        var movieObj1 = new Movie(omdb.Title, omdb.Poster, omdb.imdbRating)
-
+        var movieObj1 = new Movie(omdb.Title , omdb.Poster , omdb.imdbRating)
         $(".leftChoice").append("<h1>"+omdb.Title+"</h1>");
         $(".leftChoice").append('<img class="choice1" src='+omdb.Poster+'>')
         //console.log(omdb)
@@ -30,7 +30,7 @@ function run(){
         var movie2 = data.results.collection1[$randNum()].property1.text;
         var sendee2 = movie2.replace(/\s/g,"+");
         $.get('http://www.omdbapi.com/?t='+sendee2+'&y=&plot=short&r=json', function(omdb){
-          var movieObj2 = new Movie(omdb.Title, omdb.Poster, omdb.imdbRating)
+          var movieObj2 = new Movie(omdb.Title , omdb.Poster , omdb.imdbRating)
           $(".rightChoice").append("<h1>"+omdb.Title+"</h1>");
           $(".rightChoice").append('<img class ="choice2" src='+omdb.Poster+'>')
           var rating2 = omdb.imdbRating;
@@ -50,7 +50,7 @@ function run(){
           //console.log($correct);
           //****************************
           var userChoice = 0;
-          clickChoice();
+          clickChoice(movieObj1,movieObj2);
 
         })
 
@@ -58,12 +58,13 @@ function run(){
   })
 }
 
-function clickChoice(){
+function clickChoice(mov1, mov2){
 var userChoice = 0;
   $('.choice1').click(function(){
     userChoice = 1;
     if(userChoice == $correct){
       $score +=1;
+      mov1.userCorrect = true;
     }
     $choiceCount += 1;
     reset();
@@ -72,6 +73,7 @@ var userChoice = 0;
     userChoice = 2;
     if(userChoice == $correct){
       $score +=1;
+      mov2.userCorrect = true;
     }
     $choiceCount += 1;
     reset();
@@ -83,6 +85,7 @@ function reset(){
     $(".resultBox").css('display','block');
     $(".overlay").css('display','block');
     $(".resultHeader").append("<h1>You're Score is "+$score+"/5</h1>")
+    fillResults();
     //alert('your score is '+$score+'/5')
     storeScore();
     $score = 0;
@@ -140,4 +143,16 @@ var Movie = function(titleg, posterg, ratingg){
   this.poster = posterg;
   this.rating = ratingg;
   this.win = false;
+  this.userCorrect = false;
+}
+
+
+
+var fillResults = function(){
+  for (var i = 0; i < movies.length; i++) {
+    $('.resultBox').prepend('<div>'+movies[i].title+'</div>');
+    if(movies[i].userCorrect){
+      $('resultBox div').css('background-color', 'green')
+    }
+  }
 }

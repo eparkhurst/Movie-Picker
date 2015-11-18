@@ -52,4 +52,13 @@ body{
   z-index: 3;
   height: 350px;
   width: 250px;
+  div{
+    display: inline-block;
+    width:50%;
+    height:20%;
+    background-color: yellow;
+  }
+  .resultHeader{
+    width:100%;
+  }
 }
