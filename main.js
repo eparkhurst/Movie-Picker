@@ -22,8 +22,12 @@ function run(){
       console.log(sendee)
       $.get('http://www.omdbapi.com/?t='+sendee+'&y=&plot=short&r=json', function(omdb){
         var movieObj1 = new Movie(omdb.Title , omdb.Poster , omdb.imdbRating)
+        if(!omdb.Title) {
+          reset();
+          return;
+        }
         $(".leftChoice").append("<h1>"+omdb.Title+"</h1>");
-        $(".leftChoice").append('<img class="choice1" src='+omdb.Poster+'>')
+        $(".leftChoice").append('<img class="choice1" src='+omdb.Poster+'>');
         console.log(omdb.Title);
         var rating1 = omdb.imdbRating;
           //*******
@@ -32,6 +36,10 @@ function run(){
         console.log(sendee2)
         $.get('http://www.omdbapi.com/?t='+sendee2+'&y=&plot=short&r=json', function(omdb){
           var movieObj2 = new Movie(omdb.Title , omdb.Poster , omdb.imdbRating)
+          if(!omdb.Title) {
+            reset();
+            return;
+          }
           $(".rightChoice").append("<h1>"+omdb.Title+"</h1>");
           $(".rightChoice").append('<img class ="choice2" src='+omdb.Poster+'>')
           console.log(omdb.Title);
