@@ -1,6 +1,6 @@
 body {
   background-color: black;
-  background-image: url("http://www.utahmoviereview.com/wp-content/uploads/2014/06/empty_theater.jpg");
+  background-image: url("http://www.brandanddeliver.co.uk/wp-content/uploads/2015/04/movies2.jpg");
   background-size: cover;
   text-align: center;
   font-family: sans-serif;
@@ -31,31 +31,78 @@ body {
   opacity: .7; }
 
 .inputBox {
+  font-family: Anton , sans-serif;
   margin: 150px auto;
   position: relative;
-  background-color: #4a4a4a;
+  border: 5px solid #4f4f4f;
+  background-color: #e6e6e6;
   display: block;
   z-index: 3;
-  height: 150px;
-  width: 250px; }
-
-.userForm {
-  margin-top: 15px; }
+  height: 175px;
+  width: 290px;
+  color: black;
+  border-radius: 15px; }
+  .inputBox input {
+    margin-top: 2em; }
 
 .resultBox {
-  margin: 150px auto;
+  border-radius: 15px;
+  border: 5px solid #4f4f4f;
+  margin: 60px auto;
   position: relative;
-  background-color: #4a4a4a;
+  background-color: #bfbfbf;
   display: none;
   z-index: 3;
-  height: 350px;
-  width: 250px; }
-  .resultBox div {
-    display: inline-block;
-    width: 50%;
-    height: 20%;
-    background-color: green; }
+  height: 480px;
+  width: 350px;
+  color: black; }
   .resultBox .resultHeader {
     width: 100%; }
+  .resultBox .resultBody {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 340px; }
+    .resultBox .resultBody div {
+      display: inline-block;
+      margin: 1px;
+      flex: 0 0 47%;
+      height: 18%;
+      border: 2px solid black;
+      background-color: #888888; }
+
+.return {
+  margin-top: 10px; }
+
+.button {
+  border-top: 1px solid #74787a;
+  background: #a8b9c4;
+  background: -webkit-gradient(linear, left top, left bottom, from(#191e21), to(#a8b9c4));
+  background: -webkit-linear-gradient(top, #191e21, #a8b9c4);
+  background: -moz-linear-gradient(top, #191e21, #a8b9c4);
+  background: -ms-linear-gradient(top, #191e21, #a8b9c4);
+  background: -o-linear-gradient(top, #191e21, #a8b9c4);
+  padding: 6.5px 13px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  -webkit-box-shadow: black 0 1px 0;
+  -moz-box-shadow: black 0 1px 0;
+  box-shadow: black 0 1px 0;
+  text-shadow: rgba(0, 0, 0, 0.4) 0 1px 0;
+  color: white;
+  font-size: 13px;
+  font-family: Georgia, serif;
+  text-decoration: none;
+  vertical-align: middle; }
+
+.button:hover {
+  border-top-color: #9c0e15;
+  background: #9c0e15;
+  color: #cccccc; }
+
+.button:active {
+  border-top-color: #1b435e;
+  background: #1b435e; }
 
 /*# sourceMappingURL=final.css.map */

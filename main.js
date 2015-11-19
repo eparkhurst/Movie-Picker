@@ -14,27 +14,28 @@ for ( var i = 0, len = localStorage.length; i < len; ++i ) {
 
 
 
-run();
+
 function run(){
   $.get('kimonoData.json', function(data){
       var movie = data.results.collection1[$randNum()].property1.text;
       var sendee = movie.replace(/\s/g,"+");
+      console.log(sendee)
       $.get('http://www.omdbapi.com/?t='+sendee+'&y=&plot=short&r=json', function(omdb){
         var movieObj1 = new Movie(omdb.Title , omdb.Poster , omdb.imdbRating)
         $(".leftChoice").append("<h1>"+omdb.Title+"</h1>");
         $(".leftChoice").append('<img class="choice1" src='+omdb.Poster+'>')
-        //console.log(omdb)
+        console.log(omdb.Title);
         var rating1 = omdb.imdbRating;
-      //  console.log("1 is "+rating1);
           //*******
         var movie2 = data.results.collection1[$randNum()].property1.text;
         var sendee2 = movie2.replace(/\s/g,"+");
+        console.log(sendee2)
         $.get('http://www.omdbapi.com/?t='+sendee2+'&y=&plot=short&r=json', function(omdb){
           var movieObj2 = new Movie(omdb.Title , omdb.Poster , omdb.imdbRating)
           $(".rightChoice").append("<h1>"+omdb.Title+"</h1>");
           $(".rightChoice").append('<img class ="choice2" src='+omdb.Poster+'>')
+          console.log(omdb.Title);
           var rating2 = omdb.imdbRating;
-        //  console.log('2 is '+rating2);
           if(rating1 === rating2){
             reset();
           }
@@ -64,38 +65,43 @@ var userChoice = 0;
     userChoice = 1;
     if(userChoice == $correct){
       $score +=1;
-      mov1.userCorrect = true;
     }
+    mov1.userCorrect = true;
     $choiceCount += 1;
-    reset();
+    if($choiceCount == 5){                   //When a game is finished
+      displayResults()
+    }else reset();
   })
   $('.choice2').click(function(){
     userChoice = 2;
     if(userChoice == $correct){
       $score +=1;
-      mov2.userCorrect = true;
     }
+    mov2.userCorrect = true;
     $choiceCount += 1;
-    reset();
+    if($choiceCount == 5){                   //When a game is finished
+      displayResults()
+    }else  reset();
   })
 }
 
 function reset(){
-  if($choiceCount == 5){                   //When a game is finished
-    $(".resultBox").css('display','block');
-    $(".overlay").css('display','block');
-    $(".resultHeader").append("<h1>You're Score is "+$score+"/5</h1>")
-    fillResults();
-    //alert('your score is '+$score+'/5')
-    storeScore();
-    $score = 0;
-    $choiceCount = 0;
-  }
+
   //console.log($score);
-  console.log(movies);
+  //console.log(movies);
   $('.leftChoice').empty();
   $('.rightChoice').empty();
   run();
+}
+function displayResults(){
+  $(".resultBox").css('display','block');
+  $(".overlay").css('display','block');
+  $(".resultHeader").prepend("<h1>You're Score is "+$score+"/5</h1>")
+  fillResults();
+  //alert('your score is '+$score+'/5')
+  storeScore();
+  $score = 0;
+  $choiceCount = 0;
 }
 
 var $randNum =function(){
@@ -114,6 +120,7 @@ var closeSubmitBox = function(){
     }
     localStorage.setItem(currentUser, JSON.stringify(newObj))
   }
+  run();
 }
 
 $(".submit").click(function(){
@@ -127,8 +134,9 @@ $(".userName").keyup(function(e){
 $(".return").click(function(){
   $(".overlay").css("display","none");
   $(".resultBox").css('display','none');
-  $(".resultHeader").empty();
+  $(".resultHeader, .resultBody").empty();
   movies = [];
+  reset();
 })
 
 
@@ -150,9 +158,11 @@ var Movie = function(titleg, posterg, ratingg){
 
 var fillResults = function(){
   for (var i = 0; i < movies.length; i++) {
-    $('.resultBox').prepend('<div>'+movies[i].title+'</div>');
-    if(movies[i].userCorrect){
-      $('resultBox div').css('background-color', 'green')
+    $('.resultBody').append('<div class = "mov'+i+'">'+movies[i].title+'</div>');
+    if(movies[i].userCorrect && movies[i].win ){
+      $('.mov'+i.toString()).css('background-color', '#00cc66');
+    }else if (movies[i].userCorrect) {
+      $('.mov'+i.toString()).css('background-color', '#ff3333');
     }
   }
 }
