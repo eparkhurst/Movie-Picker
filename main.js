@@ -120,6 +120,7 @@ var $randNum =function(){
 var closeSubmitBox = function(){
   $(".overlay").css("display","none");
   $(".inputBox").css("display", "none");
+  $('.headtitle').prepend('<span>'+$(".userName").val()+', </span>');
   currentUser = $(".userName").val().toLowerCase();
   if($.inArray(currentUser, userList) === -1){
     var newObj = {
