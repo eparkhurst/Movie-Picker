@@ -16,7 +16,9 @@ body {
   justify-content: center;
   flex-wrap: wrap; }
   .leftChoice img, .rightChoice img {
-    cursor: pointer; }
+    cursor: pointer;
+    width: 300px;
+    height: 450px; }
   .leftChoice h1, .rightChoice h1 {
     font-size: 2em;
     flex: 0 0 100%; }

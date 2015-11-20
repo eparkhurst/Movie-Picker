@@ -25,7 +25,7 @@ function run(){
       console.log(sendee)
       $.get('https://www.omdbapi.com/?t='+sendee+'&y=&plot=short&r=json', function(omdb){
         var movieObj1 = new Movie(omdb.Title , omdb.Poster , omdb.imdbRating)
-        if(!omdb.Title) {
+        if(!omdb.Title ||!omdb.Poster) {
           reset();
           return;
         }
