@@ -1,5 +1,8 @@
 console.log("sanity check");
 
+//var Firebase = require("firebase");
+//var myFirebaseRef = new Firebase("s://intense-heat-9278.firebaseio.com/")
+
 var $score =0;
 var $correct = 0;
 var $choiceCount = 0;
@@ -20,7 +23,7 @@ function run(){
       var movie = data.results.collection1[$randNum()].property1.text;
       var sendee = movie.replace(/\s/g,"+");
       console.log(sendee)
-      $.get('http://www.omdbapi.com/?t='+sendee+'&y=&plot=short&r=json', function(omdb){
+      $.get('https://www.omdbapi.com/?t='+sendee+'&y=&plot=short&r=json', function(omdb){
         var movieObj1 = new Movie(omdb.Title , omdb.Poster , omdb.imdbRating)
         if(!omdb.Title) {
           reset();
@@ -28,13 +31,11 @@ function run(){
         }
         $(".leftChoice").append("<h1>"+omdb.Title+"</h1>");
         $(".leftChoice").append('<img class="choice1" src='+omdb.Poster+'>');
-        console.log(omdb.Title);
         var rating1 = omdb.imdbRating;
           //*******
         var movie2 = data.results.collection1[$randNum()].property1.text;
         var sendee2 = movie2.replace(/\s/g,"+");
-        console.log(sendee2)
-        $.get('http://www.omdbapi.com/?t='+sendee2+'&y=&plot=short&r=json', function(omdb){
+        $.get('https://www.omdbapi.com/?t='+sendee2+'&y=&plot=short&r=json', function(omdb){
           var movieObj2 = new Movie(omdb.Title , omdb.Poster , omdb.imdbRating)
           if(!omdb.Title) {
             reset();
@@ -42,7 +43,6 @@ function run(){
           }
           $(".rightChoice").append("<h1>"+omdb.Title+"</h1>");
           $(".rightChoice").append('<img class ="choice2" src='+omdb.Poster+'>')
-          console.log(omdb.Title);
           var rating2 = omdb.imdbRating;
           if(rating1 === rating2){
             reset();

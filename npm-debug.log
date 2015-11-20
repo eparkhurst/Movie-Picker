@@ -1,0 +1,44 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install',
+1 verbose cli   'node_modules' ]
+2 info using npm@2.14.7
+3 info using node@v4.2.1
+4 verbose config Skipping project config: /Users/elijahparkhurst/.npmrc. (matches userconfig)
+5 verbose install initial load of /Users/elijahparkhurst/package.json
+6 verbose installManyTop reading scoped package data from /Users/elijahparkhurst/node_modules/bootstrap/package.json
+7 verbose installManyTop reading scoped package data from /Users/elijahparkhurst/node_modules/firebase/package.json
+8 verbose installManyTop reading scoped package data from /Users/elijahparkhurst/node_modules/gulp/package.json
+9 verbose installManyTop reading scoped package data from /Users/elijahparkhurst/node_modules/gulp-eslint/package.json
+10 verbose installManyTop reading scoped package data from /Users/elijahparkhurst/node_modules/gulp-mocha/package.json
+11 verbose installManyTop reading scoped package data from /Users/elijahparkhurst/node_modules/gulp-uglify/package.json
+12 verbose installManyTop reading scoped package data from /Users/elijahparkhurst/node_modules/requirejs/package.json
+13 info package.json firebase@2.3.2 No license field.
+14 info package.json requirejs@2.1.21 No license field.
+15 verbose readDependencies loading dependencies from /Users/elijahparkhurst/package.json
+16 silly cache add args [ 'node_modules', null ]
+17 verbose cache add spec node_modules
+18 silly cache add parsed spec Result {
+18 silly cache add   raw: 'node_modules',
+18 silly cache add   scope: null,
+18 silly cache add   name: null,
+18 silly cache add   rawSpec: 'node_modules',
+18 silly cache add   spec: '/Users/elijahparkhurst/Documents/gschool/frontEndProject/node_modules',
+18 silly cache add   type: 'local' }
+19 error addLocal Could not install /Users/elijahparkhurst/Documents/gschool/frontEndProject/node_modules
+20 verbose stack Error: ENOENT: no such file or directory, open '/Users/elijahparkhurst/Documents/gschool/frontEndProject/node_modules'
+20 verbose stack     at Error (native)
+21 verbose cwd /Users/elijahparkhurst/Documents/gschool/frontEndProject
+22 error Darwin 15.0.0
+23 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "node_modules"
+24 error node v4.2.1
+25 error npm  v2.14.7
+26 error path /Users/elijahparkhurst/Documents/gschool/frontEndProject/node_modules
+27 error code ENOENT
+28 error errno -2
+29 error syscall open
+30 error enoent ENOENT: no such file or directory, open '/Users/elijahparkhurst/Documents/gschool/frontEndProject/node_modules'
+30 error enoent This is most likely not a problem with npm itself
+30 error enoent and is related to npm not being able to find a file.
+31 verbose exit [ -2, true ]

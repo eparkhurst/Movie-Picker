@@ -15,6 +15,8 @@ body {
   flex: 0 0 50%;
   justify-content: center;
   flex-wrap: wrap; }
+  .leftChoice img, .rightChoice img {
+    cursor: pointer; }
   .leftChoice h1, .rightChoice h1 {
     font-size: 2em;
     flex: 0 0 100%; }
@@ -61,10 +63,13 @@ body {
   .resultBox .resultBody {
     display: flex;
     flex-wrap: wrap;
+    align-content: center;
     width: 100%;
     height: 340px; }
     .resultBox .resultBody div {
-      display: inline-block;
+      align-items: center;
+      justify-content: center;
+      display: flex;
       margin: 1px;
       flex: 0 0 47%;
       height: 18%;
@@ -75,6 +80,7 @@ body {
   margin-top: 10px; }
 
 .button {
+  cursor: pointer;
   border-top: 1px solid #74787a;
   background: #a8b9c4;
   background: -webkit-gradient(linear, left top, left bottom, from(#191e21), to(#a8b9c4));
